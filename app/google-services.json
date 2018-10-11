@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "637813453862",
+    "firebase_url": "https://miniproject-d3836.firebaseio.com",
+    "project_id": "miniproject-d3836",
+    "storage_bucket": "miniproject-d3836.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:637813453862:android:a6850cc42d189a60",
+        "android_client_info": {
+          "package_name": "com.dell.nfclib"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "637813453862-omgn7u43mcg3vffqi1ea03htvlr1qon8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dell.nfclib",
+            "certificate_hash": "44bd63a6571aa804461a24ccf7865ae19b1ce183"
+          }
+        },
+        {
+          "client_id": "637813453862-t42t9jcjv0f2ngt3ec5par150c52riq8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOJxZLMEgsVM-v95mf5XGAJ_PUQ2v9kHo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "637813453862-t42t9jcjv0f2ngt3ec5par150c52riq8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
