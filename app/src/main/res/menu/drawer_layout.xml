@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:title="Home"></item>
+        <item
+            android:id="@+id/addBook"
+            android:title="Add Book"></item>
+        <item
+            android:id="@+id/issuebook"
+            android:title="Issue Book"></item>
+        <item
+            android:id="@+id/returnBook"
+            android:title="Return Book"></item>
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/viewUsers"
+            android:title="View Users"></item>
+    </group>
+
+    <group android:id="@+id/group3"
+        android:checkableBehavior="single">
+
+        <item
+            android:title="Sign Out"
+            android:id="@+id/signOut"></item>
+
+    </group>
+</menu>

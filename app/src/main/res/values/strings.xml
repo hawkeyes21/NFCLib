@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">NFCLib</string>
+    <string name="registerPageRedirect">Not a user? Click to Register</string>
+    <string name="or">or</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="fullName">full name</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="loginPageRedirect">Already registered? Click to Login</string>
 </resources>
