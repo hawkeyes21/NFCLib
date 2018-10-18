@@ -39,12 +39,14 @@
         app:layout_constraintBottom_toTopOf="@+id/passwordTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        style="@style/LoginTextInputLayoutStyle">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textEmailAddress" />
 
     </android.support.design.widget.TextInputLayout>
@@ -65,12 +67,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextInputLayout"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        style="@style/LoginTextInputLayoutStyle"
+        app:passwordToggleTint="@color/blueColorPrimary">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
@@ -153,20 +158,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:visibility="gone"/>
-
-    <TextView
-        android:id="@+id/adminLoginTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Admin Login"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

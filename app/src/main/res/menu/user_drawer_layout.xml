@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group0"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/userMyBooks"
+            android:title="My Books"
+            android:icon="@drawable/ic_icon_library"></item>
+
+        <item
+            android:id="@+id/userHistory"
+            android:title="History"
+            android:icon="@drawable/ic_icon_history"></item>
+
+    </group>
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/userIssueBook"
+            android:title="Issue Book"
+            android:icon="@drawable/ic_icon_issuebook"></item>
+
+        <item
+            android:id="@+id/userReturnBook"
+            android:title="Return Book"
+            android:icon="@drawable/ic_icon_returnbook"></item>
+
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/userProfile"
+            android:title="Profile"
+            android:icon="@drawable/ic_icon_profile"></item>
+
+        <item
+            android:id="@+id/userSettings"
+            android:title="Setting"
+            android:icon="@drawable/ic_icon_setting"></item>
+
+    </group>
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/userSignOut"
+            android:title="Sign Out"
+            android:icon="@drawable/ic_icon_signout"></item>
+
+    </group>
+
+</menu>

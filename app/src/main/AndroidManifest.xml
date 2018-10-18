@@ -3,6 +3,10 @@
     package="com.dell.nfclib">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-feature android:name="android.hardware.nfc" />
 
     <application
         android:allowBackup="true"
@@ -21,7 +25,44 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".AdminHomeActivity" />
-        <activity android:name=".AvatarSelectionActivity"></activity>
+        <activity android:name=".AvatarSelectionActivity" />
+        <activity android:name=".UserListActivity" />
+        <activity android:name=".AdminNFCConfigureActivity">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+        </activity>
+        <activity android:name=".AdminAddBookActivity" />
+        <activity android:name=".AdminRemoveBookActivity" />
+        <activity android:name=".AdminIssueBookActivity" />
+        <activity android:name=".AdminReturnBookActivity" />
+        <activity android:name=".AdminRemoveUsersActivity" />
+        <activity android:name=".UserIssueBookActivity">
+            <intent-filter>
+                <action android:name="android.nfc.action.NDEF_DISCOVERED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.action.TECH_DISCOVERED"
+                android:resource="@xml/nfc_tech_filter" />
+        </activity>
+        <activity android:name=".UserMyBooksActivity" />
+        <activity android:name=".UserHistoryActivity" />
+        <activity android:name=".UserReturnBookActivity" />
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".UserSettingActivity"></activity>
     </application>
 
 </manifest>

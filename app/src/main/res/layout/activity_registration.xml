@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".RegistrationActivity">
+    tools:context=".RegistrationActivity"
+    android:padding="20dp">
 
     <ImageView
         android:id="@+id/imageView"
@@ -15,7 +16,6 @@
         android:layout_height="160dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="TODO"
         android:src="@drawable/logo"
@@ -26,6 +26,7 @@
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/fullNameTextInputLayout"
+        style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -33,10 +34,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:hint="@string/fullName"
         app:errorEnabled="true"
-        app:hintEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/emailTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,23 +45,21 @@
             android:id="@+id/fullNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/fullName"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/emailTextInputLayout"
+        style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:hint="@string/email"
         app:errorEnabled="true"
-        app:hintEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/passwordTextInputLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -74,34 +71,33 @@
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/email"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textEmailAddress" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/passwordTextInputLayout"
+        style="@style/LoginTextInputLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
         android:hint="@string/password"
         app:errorEnabled="true"
-        app:hintEnabled="false"
         app:layout_constraintBottom_toTopOf="@+id/registerButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailTextInputLayout"
-        app:passwordToggleEnabled="true">
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/blueColorPrimary">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
+            android:fontFamily="sans-serif-condensed"
             android:inputType="textPassword" />
 
     </android.support.design.widget.TextInputLayout>
@@ -112,10 +108,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="@string/register"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/loginRedirectTextView"
@@ -129,10 +124,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:focusable="true"
         android:text="@string/loginPageRedirect"
         app:layout_constraintBottom_toBottomOf="parent"

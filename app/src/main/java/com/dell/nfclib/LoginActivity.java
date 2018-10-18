@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     userDetails userDetails = new userDetails();
     int flag = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -57,17 +58,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         signInButton = (SignInButton) findViewById(R.id.googleSignInButton);
         loginButton = (Button) findViewById(R.id.loginButton);
         registerAccountTextView = (TextView) findViewById(R.id.registerPageRedirectTextView);
-        emailEditText = (EditText)findViewById(R.id.emailEditText);
-        passwordEditText = (EditText)findViewById(R.id.passwordEditText);
-        progressBar = (ProgressBar)findViewById(R.id.loginProgressBar);
+        emailEditText = (EditText) findViewById(R.id.emailEditText);
+        passwordEditText = (EditText) findViewById(R.id.passwordEditText);
+        progressBar = (ProgressBar) findViewById(R.id.loginProgressBar);
 
-
-        (findViewById(R.id.adminLoginTextView)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this, AdminHomeActivity.class));
-            }
-        });
 
         // Redirects to the registration page...
         registerAccountTextView.setOnClickListener(this);
@@ -105,41 +99,44 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onStart()
     {
         super.onStart();
+
         /*
          * If the user did not logout the last time from the app, they will be redirected accordingly
          * as per their designation to either user homescreen or admin homescreen.
          */
-        if(mAuth.getCurrentUser() != null)
+
+        if (mAuth.getCurrentUser() != null)
         {
             DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
             DatabaseReference myRef = firebaseDatabase.child("users").child(mAuth.getCurrentUser().getUid());
-             myRef.addListenerForSingleValueEvent(new ValueEventListener()
+            myRef.addListenerForSingleValueEvent(new ValueEventListener()
+            {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot)
                 {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
+                    userDetails = dataSnapshot.getValue(userDetails.class);
+                    if (userDetails.getDesignation().equals("admin"))
                     {
-                        userDetails = dataSnapshot.getValue(userDetails.class);
-                        if (userDetails.getDesignation().equals("admin"))
-                        {
-                            finish();
-                            Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
-                            // The flag is added to remove all the top activities from the stack...
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                        }
-                        else
-                        {
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        }
-                    }
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError)
+                        finish();
+                        Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
+                        // The flag is added to remove all the top activities from the stack...
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    } else
                     {
-                        // Empty
+                        finish();
+                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     }
-                });
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError)
+                {
+                    // Empty
+                }
+            });
         }
+
     } // onStart() finishes here... *********************
 
     // GoogleSignIn Intent
@@ -219,7 +216,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                              * A new user will always have designation as 'user', and thus will always be redirected
                              * to the homepage by default
                              */
-                            if(isNewUser)
+                            if (isNewUser)
                             {
                                 mDatabase.child("users").child(mAuth.getCurrentUser().getUid()).setValue(userDetails)
                                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<Void>()
@@ -227,12 +224,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                             @Override
                                             public void onComplete(@NonNull Task<Void> task)
                                             {
-                                                if(task.isSuccessful())
+                                                if (task.isSuccessful())
                                                 {
                                                     Toast.makeText(getApplicationContext(), "Successfully Added to database", Toast.LENGTH_LONG)
                                                             .show();
-                                                }
-                                                else
+                                                } else
                                                 {
                                                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG)
                                                             .show();
@@ -248,22 +244,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                              * be assigned designation as 'user' by default.
                              * This, it will launch activity accordingly...
                              *
-                            */
+                             */
                             ref.addListenerForSingleValueEvent(new ValueEventListener()
                             {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot)
                                 {
                                     userDetails details = dataSnapshot.getValue(userDetails.class);
-                                    if(details.getDesignation().equals("admin"))
+                                    if (details.getDesignation().equals("admin"))
                                     {
                                         finish();
                                         Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                                         // The flag is added to remove all the top activities from the stack...
                                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(intent);
-                                    }
-                                    else
+                                    } else
                                     {
                                         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                                         finish();
@@ -271,13 +266,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                 }
 
                                 @Override
-                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                public void onCancelled(@NonNull DatabaseError databaseError)
+                                {
 
                                 }
                             });
 
-                        }
-                        else
+                        } else
                         {
                             // If sign in fails, display a message to the user.
 
@@ -305,7 +300,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-
     /*
      *
      * The below code deals with Email-Password Login...
@@ -322,28 +316,28 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
-        if(email.isEmpty())
+        if (email.isEmpty())
         {
             emailEditText.setError("email is required");
             emailEditText.requestFocus();
             return;
         }
 
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches())
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches())
         {
             emailEditText.setError("enter a valid email");
             emailEditText.requestFocus();
             return;
         }
 
-        if(password.isEmpty())
+        if (password.isEmpty())
         {
             passwordEditText.setError("password is required");
             passwordEditText.requestFocus();
             return;
         }
 
-        if(password.length() < 6)
+        if (password.length() < 6)
         {
             passwordEditText.setError("password should be atleast 6 digits");
             passwordEditText.requestFocus();
@@ -359,7 +353,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             {
                 progressBar.setVisibility(View.GONE);
 
-                if(task.isSuccessful())
+                if (task.isSuccessful())
                 {
                     // The code below checks the user designation and signs in accordingly... it works.
 
@@ -382,15 +376,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             try
                             {
                                 userDetails = dataSnapshot.getValue(userDetails.class);
-                                if(userDetails.getDesignation().equals("admin"))
+                                if (userDetails.getDesignation().equals("admin"))
                                 {
                                     finish();
                                     Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                                     // The flag is added to remove all the top activities from the stack...
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
-                                }
-                                else
+                                } else
                                 {
                                     finish();
                                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
@@ -398,10 +391,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                     startActivity(intent);
                                 }
-                            }
-                            catch(NullPointerException e)
+                            } catch (NullPointerException e)
                             {
-                                Toast.makeText(getApplicationContext(), "Some error.\n"+e.getMessage(), Toast.LENGTH_LONG)
+                                Toast.makeText(getApplicationContext(), "Some error.\n" + e.getMessage(), Toast.LENGTH_LONG)
                                         .show();
                                 mAuth.signOut();
                             }
@@ -413,7 +405,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             // Empty
                         }
                     });
-
 
 
 //                    boolean designation = firebaseDatabase.equals("admin");
@@ -431,8 +422,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 //                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 //                        startActivity(intent);
 //                    }
-                }
-                else
+                } else
                 {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG)
                             .show();
@@ -454,8 +444,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot)
             {
-                userDetails data = dataSnapshot.getValue(userDetails.class);
-                if(data.getDesignation().equals("admin"))
+                userDetails data = new userDetails();
+                data = dataSnapshot.getValue(userDetails.class);
+                if (data.getDesignation().equals("admin"))
                 {
                     flag = 1;
                 }

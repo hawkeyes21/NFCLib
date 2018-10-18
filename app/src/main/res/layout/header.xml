@@ -3,15 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="172dp"
     android:orientation="vertical"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/header_blue_background"
     style="@style/ThemeOverlay.AppCompat.Dark"
-    android:padding="25dp">
+    android:padding="25dp"
+    android:id="@+id/adminHomeHeader">
 
     <ImageView
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/logo"
-        android:layout_gravity="center"/>
+        android:src="@drawable/user_profile"
+        android:layout_gravity="center"
+        android:id="@+id/adminHomeHeaderImageView"
+        android:layout_marginTop="24dp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +22,20 @@
         android:textColor="#FFF"
         style="@style/TextAppearance.AppCompat.Body1"
         android:layout_marginTop="8dp"
-        android:layout_gravity="center"/>
+        android:id="@+id/adminHomeHeaderUserName"
+        android:layout_gravity="start"
+        android:visibility="gone"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EMAIL"
+        android:textColor="#FFF"
+        android:layout_gravity="left"
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_marginTop="4dp"
+        android:id="@+id/adminHomeHeaderEmailTextView"
+        android:visibility="gone"/>
 
 
 

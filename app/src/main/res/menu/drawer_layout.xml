@@ -2,38 +2,64 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group
-        android:id="@+id/group1"
-        android:checkableBehavior="single">
-
-        <item
-            android:id="@+id/home"
-            android:title="Home"></item>
-        <item
-            android:id="@+id/addBook"
-            android:title="Add Book"></item>
-        <item
-            android:id="@+id/issuebook"
-            android:title="Issue Book"></item>
-        <item
-            android:id="@+id/returnBook"
-            android:title="Return Book"></item>
-    </group>
-
-    <group
         android:id="@+id/group2"
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/viewUsers"
-            android:title="View Users"></item>
+            android:id="@+id/configureNFC"
+            android:title="Configure NFC"
+            android:icon="@drawable/ic_icon_nfc"></item>
+
     </group>
 
-    <group android:id="@+id/group3"
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/issuebook"
+            android:title="Issue Book"
+            android:icon="@drawable/ic_icon_issuebook"></item>
+        <item
+            android:id="@+id/returnBook"
+            android:title="Return Book"
+            android:icon="@drawable/ic_icon_returnbook"></item>
+    </group>
+
+
+    <group
+        android:id="@+id/group3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/addBook"
+            android:title="Add Book"
+            android:icon="@drawable/ic_icon_addbook"></item>
+        <item
+            android:title="Remove Book"
+            android:id="@+id/removeBook"
+            android:icon="@drawable/ic_icon_removebook"></item>
+    </group>
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/viewUsers"
+            android:title="Manage Users"
+            android:icon="@drawable/ic_icon_viewusers"></item>
+        <item
+            android:title="Remove Users"
+            android:id="@+id/removeUsers"
+            android:icon="@drawable/ic_icon_removeusers"></item>
+    </group>
+
+    <group android:id="@+id/group5"
         android:checkableBehavior="single">
 
         <item
             android:title="Sign Out"
-            android:id="@+id/signOut"></item>
+            android:id="@+id/signOut"
+            android:icon="@drawable/ic_icon_signout"></item>
 
     </group>
 </menu>
