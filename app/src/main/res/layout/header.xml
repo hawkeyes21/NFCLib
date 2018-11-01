@@ -1,42 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/adminHomeHeader"
+    style="@style/ThemeOverlay.AppCompat.Dark"
     android:layout_width="match_parent"
     android:layout_height="172dp"
-    android:orientation="vertical"
     android:background="@drawable/header_blue_background"
-    style="@style/ThemeOverlay.AppCompat.Dark"
-    android:padding="25dp"
-    android:id="@+id/adminHomeHeader">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <ImageView
+        android:id="@+id/adminHomeHeaderImageView"
         android:layout_width="64dp"
         android:layout_height="64dp"
-        android:src="@drawable/user_profile"
         android:layout_gravity="center"
-        android:id="@+id/adminHomeHeaderImageView"
-        android:layout_marginTop="24dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textColor="#FFF"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_marginTop="8dp"
-        android:id="@+id/adminHomeHeaderUserName"
-        android:layout_gravity="start"
-        android:visibility="gone"/>
+        android:layout_marginTop="16dp"
+        android:src="@drawable/user_profile" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="EMAIL"
-        android:textColor="#FFF"
-        android:layout_gravity="left"
-        style="@style/TextAppearance.AppCompat.Body1"
-        android:layout_marginTop="4dp"
         android:id="@+id/adminHomeHeaderEmailTextView"
-        android:visibility="gone"/>
-
-
+        style="@style/TextAppearance.AppCompat.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="4dp"
+        android:inputType="textEmailAddress"
+        android:text="email"
+        android:textColor="#FFF"
+        android:textSize="12sp" />
 
 </LinearLayout>

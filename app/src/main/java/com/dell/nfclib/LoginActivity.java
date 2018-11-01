@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
          * If the user did not logout the last time from the app, they will be redirected accordingly
          * as per their designation to either user homescreen or admin homescreen.
          */
-
+        final Bundle bundle = new Bundle();
         if (mAuth.getCurrentUser() != null)
         {
             DatabaseReference firebaseDatabase = FirebaseDatabase.getInstance().getReference();
@@ -117,10 +117,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     userDetails = dataSnapshot.getValue(userDetails.class);
                     if (userDetails.getDesignation().equals("admin"))
                     {
+
                         finish();
                         Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                         // The flag is added to remove all the top activities from the stack...
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        intent.putExtra("CURRENT_USER_EMAIL", mAuth.getCurrentUser().getEmail());
+                        intent.putExtra("CURRENT_USER_NAME", mAuth.getCurrentUser().getDisplayName());
                         startActivity(intent);
                     } else
                     {
@@ -242,7 +245,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             /* Signing in as per the designation... As mentioned above, a new user will always
                              * be assigned designation as 'user' by default.
-                             * This, it will launch activity accordingly...
+                             * Ths, it will launch activity accordingly...
                              *
                              */
                             ref.addListenerForSingleValueEvent(new ValueEventListener()
@@ -382,6 +385,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     Intent intent = new Intent(LoginActivity.this, AdminHomeActivity.class);
                                     // The flag is added to remove all the top activities from the stack...
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.putExtra("CURRENT_USER_EMAIL", mAuth.getCurrentUser().getEmail());
                                     startActivity(intent);
                                 } else
                                 {
@@ -389,6 +393,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     // The flag is added to remove all the top activities from the stack...
                                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    intent.putExtra("CURRRENT_USER_EMAIL", mAuth.getCurrentUser().getEmail());
                                     startActivity(intent);
                                 }
                             } catch (NullPointerException e)

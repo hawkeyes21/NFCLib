@@ -52,7 +52,7 @@ public class AdminNFCConfigureActivity extends AppCompatActivity
 
         context = getApplicationContext();
         writeNFCButton = findViewById(R.id.writeNFCButton);
-        readNFCButton = findViewById(R.id.readNFCButton);
+
         writeNFCEditText = findViewById(R.id.bookNFCEditText);
         readNFCTextView = findViewById(R.id.readNFCTextView);
 
@@ -67,7 +67,7 @@ public class AdminNFCConfigureActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 finish();
-                startActivity(new Intent(AdminNFCConfigureActivity.this, HomeActivity.class));
+                startActivity(new Intent(AdminNFCConfigureActivity.this, AdminHomeActivity.class));
             }
         });
 

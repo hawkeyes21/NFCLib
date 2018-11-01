@@ -15,6 +15,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -41,15 +42,23 @@ public class AdminHomeActivity extends AppCompatActivity
     BookListAdapter adapter;
     DatabaseReference databaseReference;
     View headerView;
+    Intent intent;
+    String currentUserEmail, currentUserName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
+
         setUpToolbar();
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Home");
+        intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        navigationView = findViewById(R.id.navigationView);
+        headerView = navigationView.getHeaderView(0);
+        TextView email = headerView.findViewById(R.id.adminHomeHeaderEmailTextView);
+        email.setText(bundle.getString("CURRENT_USER_EMAIL"));
+
 
         recyclerView = findViewById(R.id.myRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -58,6 +67,7 @@ public class AdminHomeActivity extends AppCompatActivity
         list = new ArrayList<>();
         adapter = new BookListAdapter(list);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("books");
+
         databaseReference.addChildEventListener(new ChildEventListener()
         {
             @Override
@@ -97,8 +107,6 @@ public class AdminHomeActivity extends AppCompatActivity
 
 
         mGoogleApiClient = new GoogleApiClient.Builder(getApplicationContext()).addApi(Auth.GOOGLE_SIGN_IN_API).build();
-
-        navigationView = findViewById(R.id.navigationView);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener()
         {
@@ -154,23 +162,15 @@ public class AdminHomeActivity extends AppCompatActivity
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Home00000");
         // the event listener of the drawerLayout...
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
-
-//        headerName = navigationView.findViewById(R.id.adminHomeHeaderUserName);
-//        headerEmail = navigationView.findViewById(R.id.adminHomeHeaderEmailTextView);
-//
-//        headerEmail.setText(mAuth.getCurrentUser().getEmail());
-
-//        headerView = navigationView.getHeaderView(0);
-//        TextView headerEmail = headerView.findViewById(R.id.adminHomeHeaderEmailTextView);
-//        headerEmail.setText(mAuth.getCurrentUser().getEmail());
-//        Toast.makeText(getApplicationContext(), mAuth.getCurrentUser().getEmail(), Toast.LENGTH_LONG)
-//                .show();
         actionBarDrawerToggle.syncState();
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Home");
     }
 
     private void signOut()
